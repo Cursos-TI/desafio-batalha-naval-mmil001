@@ -1,31 +1,56 @@
 #include <stdio.h>
 
 int main () {
-    // Navio posicionado verticalmente (3 partes)
+    // Tabulerio 10x10
+    int tabuleiro[10][10] = {0};
+
+    //Navio vertical (3 partes)
     int navioVertical[3][2] = {
-        {2, 3}, // Coordenada da primeira parte
-        {2, 4}, // Coordenada da segunda parte
-        {2, 5}, // Coordenada da terceira parte
+        {2, 3},
+        {2, 4},
+        {2, 5},
     };
 
-    // Navio posicionado horizontalmente (2 partes)
-    int navioHorizontal[2][2] = {
-        {5, 1}, // Coordenada da primeira parte
-        {5, 2}, // Coordanda da segunda parte
+    //Navio horizontal (2 partes)
+    int navioHorizontal [2][2] = {
+        {5, 1},
+        {6, 1},
     };
 
-    //Exibição das coordenadas do navio vertical
-    printf("Navio Vertifcal :\n");
+    //Navio diagonal (3 partes - cima direita)
+    int navioDiagonal1[3][2] = {
+        {1, 1},
+        {1, 2},
+        {1, 3},
+    };
+
+    //Navio diagonal (2 partes - baixo direita)
+    int navioDiagonal2[2][2] = {
+        {8, 2},
+        {9, 3},
+    };
+
+    //Posicionamento dos navios no tabuleiro
     for (int i = 0; i < 3; i++) {
-        printf("Parte %d: (%d, %d)\n", i + 1, navioVertical[i][0], navioVertical[i][1]);
+        tabuleiro[navioVertical[i][0]][navioVertical[i][1]] = 3;
+    }
+    for (int i = 0; i < 2; i++) {
+        tabuleiro[navioHorizontal[i][0]][navioHorizontal[i][1]] = 3;
+    }
+    for (int i = 0; i < 3; i++) {
+        tabuleiro[navioDiagonal1[i][0]][navioDiagonal1[i][1]] = 3;
+    }
+    for (int i = 0; i < 2; i++) {
+        tabuleiro[navioDiagonal2[i][0]][navioDiagonal2[i][1]] = 3;
     }
 
-    printf("\n"); //Separador
-
-    //Exibição das coordenadas do navio horizontal
-    printf("Navio Horizontal: \n");
-    for (int i = 0; i < 2; i ++) {
-        printf("Parte %d: (%d, %d)\n", i + 1, navioHorizontal[i][0], navioHorizontal[i][1]);
+    //Exibição do tabuleiro
+    printf("Tabuleiro:\n");
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            printf("%d", tabuleiro[i][j]);
+        }
+        printf("\n");
     }
 
     return 0;
